@@ -35,10 +35,12 @@ const formSchema = z.object({
 const SignInForm = () => {
   const { toast } = useToast()
   const navigate = useNavigate()
+  const [loading,setloading]= useState(false)
+  const [errorMessage,seterrorMessage]=useState()
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
-  const { loading, error: errorMessage } = useSelector((state) => state.user)
+  // const { loading, error: errorMessage } = useSelector((state) => state.user)
 
   // 1. Define your form.
   const form = useForm({
@@ -51,32 +53,32 @@ const SignInForm = () => {
 
   // 2. Define a submit handler.
   async function onSubmit(values) {
-    try {
-      dispatch(signInStart())
-      const res = await fetch(`${apiUrl}/api/auth/signin`, {
-        credentials: 'include',
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      })
+    // try {
+    //   dispatch(signInStart())
+    //   const res = await fetch(`${apiUrl}/api/auth/signin`, {
+    //     credentials: 'include',
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(values),
+    //   })
 
-      const data = await res.json()
-      if (data.success === false) {
-        toast({ title:data.message || "Sign in failed! Please try again." })
+    //   const data = await res.json()
+    //   if (data.success === false) {
+    //     toast({ title:data.message || "Sign in failed! Please try again." })
 
-        dispatch(signInFailure(data.message))
-      }
+    //     dispatch(signInFailure(data.message))
+    //   }
            
-      if (res.ok) {
-        dispatch(signInSuccess(data))
+    //   if (res.ok) {
+    //     dispatch(signInSuccess(data))
 
-        toast({ title: "Sign in Successful!" })
-        navigate("/")
-      }
-    } catch (error) {
-      toast({ title: "Something went wrong!" })
-      dispatch(signInFailure(error.message))
-    }
+    //     toast({ title: "Sign in Successful!" })
+    //     navigate("/")
+    //   }
+    // } catch (error) {
+    //   toast({ title: "Something went wrong!" })
+    //   dispatch(signInFailure(error.message))
+    // }
   }
 
   return (
