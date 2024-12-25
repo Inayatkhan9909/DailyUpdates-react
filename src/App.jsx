@@ -1,34 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import SignInForm from "./auth/forms/SignInForm"
+import SignUpForm from "./auth/forms/SignUpForm"
+import Home from "./pages/Home"
+import About from "./pages/About"
+import Dashboard from "./pages/Dashboard"
+import NewsArticles from "./pages/NewsArticles"
+import Header from "./components/shared/Header"
+import { Toaster } from "./components/ui/toaster"
+import Footer from "./components/shared/Footer"
+import PrivateRoute from "./components/shared/PrivateRoute"
+import CreatePost from "./pages/CreatePost"
+import AdminPrivateRoute from "./components/shared/AdminPrivateRoute"
+import EditPost from "./pages/EditPost"
+import PostDetails from "./pages/PostDetails"
+import ScrollToTop from "./components/shared/ScrollToTop"
+import Search from "./pages/Search"
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <BrowserRouter>
+      <Header />
+      <ScrollToTop />
+      <Routes>
+        <Route path="/sign-in" element={<SignInForm />} />
+        <Route path="/sign-up" element={<SignUpForm />} />
+
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/search" element={<Search />} />
+
+        <Route element={<PrivateRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
+
+        <Route element={<AdminPrivateRoute />}>
+          <Route path="/create-post" element={<CreatePost />} />
+          <Route path="/update-post/:postId" element={<EditPost />} />
+        </Route>
+
+        <Route path="/news" element={<Search />} />
+        <Route path="/post/:postSlug" element={<PostDetails />} />
+      </Routes>
+
+      <Footer />
+
+      <Toaster />
+    </BrowserRouter>
   )
 }
 
