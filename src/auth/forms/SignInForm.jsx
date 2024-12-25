@@ -22,7 +22,7 @@ import {
   signInStart,
   signInSuccess,
 } from "../../redux/user/userSlice"
-import GoogleAuth from "../../components/shared/GoogleAuth"
+// import GoogleAuth from "../../components/shared/GoogleAuth"
 const apiUrl=import.meta.env.VITE_BACKENT_API_URL;
 
 const formSchema = z.object({
@@ -158,7 +158,7 @@ const SignInForm = () => {
                 )}
               </Button>
 
-              <GoogleAuth />
+              {/* <GoogleAuth /> */}
             </form>
           </Form>
 
