@@ -1,4 +1,5 @@
 
+import Advertise from "@/components/shared/Advertise";
 import { Button } from "../components/ui/button"
 import { ArrowRight } from "lucide-react"
 import React, { useEffect, useState } from "react"
@@ -7,8 +8,6 @@ const apiUrl=import.meta.env.VITE_BACKENT_API_URL;
 
 const Home = () => {
   const [posts, setPosts] = useState([])
-
-  // console.log(posts)
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -79,7 +78,7 @@ const Home = () => {
       </section>
 
       <div className="p-3 bg-white">
-        {/* <Advertise /> */}
+        <Advertise/>
       </div>
 
       <div className="max-w-6xl mx-auto p-3 flex flex-col gap-8 py-7">

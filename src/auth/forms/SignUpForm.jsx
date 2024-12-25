@@ -16,7 +16,7 @@ import {
 } from "../../components/ui/form"
 import { Input } from "../../components/ui/input"
 import { useToast } from "../../hooks/use-toast"
-// import GoogleAuth from "../../components/shared/GoogleAuth"
+import GoogleAuth from "../../components/shared/GoogleAuth"
 const apiUrl=import.meta.env.VITE_BACKENT_API_URL;
 
 const formSchema = z.object({
@@ -176,7 +176,7 @@ const SignUpForm = () => {
                 )}
               </Button>
 
-              {/* <GoogleAuth /> */}
+              <GoogleAuth />
             </form>
           </Form>
 
