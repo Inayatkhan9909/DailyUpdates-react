@@ -8,6 +8,8 @@ import { Toaster } from "./components/ui/toaster"
 import Header from "./components/shared/Header"
 import Footer from "./components/shared/Footer"
 import ScrollToTop from "./components/shared/ScrollToTop"
+import PrivateRoute from "./components/shared/PrivateRoute"
+import Dashboard from "./pages/Dashboard"
 
 
 const App = () => {
@@ -18,6 +20,10 @@ const App = () => {
       <Routes>
         <Route path="/sign-in" element={<SignInForm />} />
         <Route path="/sign-up" element={<SignUpForm />} />
+
+        <Route element={<PrivateRoute/>}>
+          <Route path="/dashboard" element={<Dashboard/>} />
+        </Route>
 
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { FaSearch } from "react-icons/fa"
 import { Button } from "../ui/button"
-// import { useDispatch, useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,14 +11,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu"
-// import { signOutSuccess } from "../../redux/user/userSlice"
+import { signOutSuccess } from "../../redux/user/userSlice"
 const apiUrl=import.meta.env.VITE_BACKENT_API_URL;
 const Header = () => {
-  // const dispatch = useDispatch()
-  // const location = useLocation()
-  // const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const location = useLocation()
+  const navigate = useNavigate()
 
-  // const { currentUser } = useSelector((state) => state.user)
+  const { currentUser } = useSelector((state) => state.user)
 
   // const [searchTerm, setSearchTerm] = useState("")
   // console.log(searchTerm)
@@ -33,23 +33,23 @@ const Header = () => {
   //   }
   // }, [location.search])
 
-  // const handleSignout = async () => {
-  //   try {
-  //     const res = await fetch(`${apiUrl}/api/user/signout`, {
-  //       method: "POST",
-  //     })
+  const handleSignout = async () => {
+    try {
+      const res = await fetch(`${apiUrl}/api/user/signout`, {
+        method: "POST",
+      })
 
-  //     const data = await res.json()
+      const data = await res.json()
 
-  //     if (!res.ok) {
-  //       console.log(data.message)
-  //     } else {
-  //       dispatch(signOutSuccess())
-  //     }
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+      if (!res.ok) {
+        console.log(data.message)
+      } else {
+        dispatch(signOutSuccess())
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   // const handleSubmit = (e) => {
   //   e.preventDefault()
@@ -108,7 +108,7 @@ const Header = () => {
             </li>
           </Link>
         </ul>
-{/* 
+
         {currentUser ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -149,11 +149,8 @@ const Header = () => {
           <Link to={"/sign-in"}>
             <Button>Sign In</Button>
           </Link>
-        )} */}
+        )} 
 
-<Link to={"/sign-in"}>
-            <Button>Sign In</Button>
-          </Link>
       </div>
     </header>
   )
