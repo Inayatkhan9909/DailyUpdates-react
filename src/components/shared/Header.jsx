@@ -20,18 +20,18 @@ const Header = () => {
 
   const { currentUser } = useSelector((state) => state.user)
 
-  // const [searchTerm, setSearchTerm] = useState("")
-  // console.log(searchTerm)
+  const [searchTerm, setSearchTerm] = useState("")
+  console.log(searchTerm)
 
-  // useEffect(() => {
-  //   const urlParams = new URLSearchParams(location.search)
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search)
 
-  //   const searchTermFromUrl = urlParams.get("searchTerm")
+    const searchTermFromUrl = urlParams.get("searchTerm")
 
-  //   if (searchTermFromUrl) {
-  //     setSearchTerm(searchTermFromUrl)
-  //   }
-  // }, [location.search])
+    if (searchTermFromUrl) {
+      setSearchTerm(searchTermFromUrl)
+    }
+  }, [location.search])
 
   const handleSignout = async () => {
     try {
@@ -51,16 +51,16 @@ const Header = () => {
     }
   }
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault()
 
-  //   const urlParams = new URLSearchParams(location.search)
-  //   urlParams.set("searchTerm", searchTerm)
+    const urlParams = new URLSearchParams(location.search)
+    urlParams.set("searchTerm", searchTerm)
 
-  //   const searchQuery = urlParams.toString()
+    const searchQuery = urlParams.toString()
 
-  //   navigate(`/search?${searchQuery}`)
-  // }
+    navigate(`/search?${searchQuery}`)
+  }
 
   return (
     <header className="shadow-lg sticky">
@@ -74,14 +74,14 @@ const Header = () => {
 
         <form
           className="p-3 bg-slate-100 rounded-lg flex items-center"
-          // onSubmit={handleSubmit}
+          onSubmit={handleSubmit}
         >
           <input
             type="text"
             placeholder="Search..."
             className="focus:outline-none bg-transparent w-24 sm:w-64"
-            // value={searchTerm}
-            // onChange={(e) => setSearchTerm(e.target.value)}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
 
           <button>
