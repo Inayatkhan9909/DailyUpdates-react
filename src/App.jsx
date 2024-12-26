@@ -11,6 +11,9 @@ import ScrollToTop from "./components/shared/ScrollToTop"
 import PrivateRoute from "./components/shared/PrivateRoute"
 import Dashboard from "./pages/Dashboard"
 import Search from "./pages/Search"
+import AdminPrivateRoute from "./components/shared/AdminPrivateRoute"
+import CreatePost from "./pages/CreatePost"
+import EditPost from "./pages/EditPost"
 
 
 const App = () => {
@@ -25,6 +28,11 @@ const App = () => {
 
         <Route element={<PrivateRoute/>}>
           <Route path="/dashboard" element={<Dashboard/>} />
+        </Route>
+
+        <Route element={<AdminPrivateRoute />}>
+          <Route path="/create-post" element={<CreatePost />} />
+          <Route path="/update-post/:postId" element={<EditPost />} />
         </Route>
 
         <Route path="/" element={<Home />} />
