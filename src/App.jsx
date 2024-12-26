@@ -6,13 +6,15 @@ import Home from "./pages/Home"
 import About from "./pages/About"
 import { Toaster } from "./components/ui/toaster"
 import Header from "./components/shared/Header"
+import Footer from "./components/shared/Footer"
+import ScrollToTop from "./components/shared/ScrollToTop"
 
 
 const App = () => {
   return (
     <BrowserRouter>
       <Header/>
-      {/* <ScrollToTop /> */}
+      <ScrollToTop/>
       <Routes>
         <Route path="/sign-in" element={<SignInForm />} />
         <Route path="/sign-up" element={<SignUpForm />} />
@@ -20,7 +22,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
       </Routes>
-
+          <Footer/>
       <Toaster />
     </BrowserRouter>
   )

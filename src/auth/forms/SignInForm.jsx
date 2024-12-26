@@ -23,7 +23,7 @@ import {
   signInSuccess,
 } from "../../redux/user/userSlice"
 import GoogleAuth from "../../components/shared/GoogleAuth"
-const apiUrl=import.meta.env.VITE_BACKENT_API_URL;
+const apiUrl = import.meta.env.VITE_BACKENT_API_URL;
 
 const formSchema = z.object({
   email: z.string().min({ message: "Invalid email address." }),
@@ -62,11 +62,11 @@ const SignInForm = () => {
 
       const data = await res.json()
       if (data.success === false) {
-        toast({ title:data.message || "Sign in failed! Please try again." })
+        toast({ title: data.message || "Sign in failed! Please try again." })
 
         dispatch(signInFailure(data.message))
       }
-           
+
       if (res.ok) {
         dispatch(signInSuccess(data))
 
@@ -86,7 +86,7 @@ const SignInForm = () => {
         <div className="flex-1">
           <Link
             to={"/"}
-            
+
             className="font-bold text-2xl sm:text-4xl flex flex-wrap"
           >
             <span className="text-slate-500">Daily</span>
