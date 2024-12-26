@@ -5,7 +5,6 @@ export const appwriteConfig = {
   storageId: import.meta.env.VITE_APPWRITE_STORAGE_ID,
   url: import.meta.env.VITE_APPWRITE_URL,
 }
-
 export const client = new Client()
 
 client.setEndpoint(appwriteConfig.url)
