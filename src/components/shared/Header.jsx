@@ -128,8 +128,8 @@ const Header = () => {
 
               <DropdownMenuItem className="block font-semibold text-sm">
                 <div className="flex flex-col gap-1">
-                  <span>@{currentUser.username}</span>
-                  <span>@{currentUser.email}</span>
+                  <span>{currentUser.username}</span>
+                  <span>{currentUser.email}</span>
                 </div>
               </DropdownMenuItem>
 
